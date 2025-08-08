@@ -1,15 +1,15 @@
 #pragma once
 
-#include "ll/api/mod/NativeMod.h"
+#include <ll/api/mod/NativeMod.h>
+#include "Config.h"
 
-namespace my_mod {
+namespace mintvanilla {
 
-class MyMod {
-
+class MintVanilla {
 public:
-    static MyMod& getInstance();
+    static MintVanilla& getInstance();
 
-    MyMod() : mSelf(*ll::mod::NativeMod::current()) {}
+    MintVanilla() : mSelf(*ll::mod::NativeMod::current()) {}
 
     [[nodiscard]] ll::mod::NativeMod& getSelf() const { return mSelf; }
 
@@ -22,12 +22,14 @@ public:
     /// @return True if the mod is disabled successfully.
     bool disable();
 
-    // TODO: Implement this method if you need to unload the mod.
-    // /// @return True if the mod is unloaded successfully.
-    // bool unload();
+    /// @return True if the mod is unloaded successfully.
+    bool unload();
+
+    Config& getConfig();
 
 private:
     ll::mod::NativeMod& mSelf;
+    Config mConfig;
 };
 
-} // namespace my_mod
+} // namespace mintvanilla
