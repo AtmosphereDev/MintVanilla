@@ -10,6 +10,10 @@
 #include <ll/api/memory/Memory.h>
 
 namespace mintvanilla {
+namespace command {
+  extern void registerRestartCommand();
+  extern void registerTpsCommand();
+}
 
 MintVanilla& MintVanilla::getInstance() {
   static MintVanilla instance;
@@ -33,6 +37,12 @@ bool MintVanilla::load() {
 }
 
 bool MintVanilla::enable() {
+  if (getConfig().commands.restartCommand) {
+    command::registerRestartCommand();
+  }
+  if (getConfig().commands.tpsCommand) {
+    command::registerTpsCommand();
+  }
   mSelf.getLogger().info("Enabled!");
   return true;
 }

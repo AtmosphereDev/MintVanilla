@@ -17,7 +17,15 @@ struct Config {
     Dispatcher<bool, hideoperator::HideOperator> hideOperator = true;
   } tweaks{};
   struct {
+    bool restartCommand = true;
+    bool tpsCommand = true;
+  } commands{};
+  struct {
     int seed = -777;
+    bool tpsCommandAny = true;
+    std::string tpsCommandFormat = "[TPS]: %tps%";
+    std::string serverIp = "localhost";
+    ushort serverPort = 19132;
   } extras{};
 };
 

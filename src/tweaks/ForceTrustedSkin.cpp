@@ -54,11 +54,11 @@ ForceTrustedSkin::~ForceTrustedSkin() = default;
 //   return origin(bs);
 // }
 
-// LL_TYPE_INSTANCE_HOOK(
+// LL_AUTO_TYPE_INSTANCE_HOOK(
 //   PlayerSkinPacketHook,
 //   ll::memory::HookPriority::Normal,
-//   PlayerSkinPacket,
-//   &PlayerSkinPacket::$write,
+//   SerializedSkinImpl,
+//   &SerializedSkinImpl::$write,
 //   void,
 //   BinaryStream& bs
 // ) {
